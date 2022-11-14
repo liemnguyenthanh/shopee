@@ -1,0 +1,236 @@
+//Card search home page
+.list-card {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+}
+
+.card-pro__search {
+  width: calc(100% + 2px);
+  opacity: 0;
+  padding: 10px 0;
+
+  position: absolute;
+  bottom: -37px;
+  left: -1px;
+  transition: 0.1s;
+  background-color: $color-main;
+  color: $color-FFFFFF;
+  text-align: center;
+  font-size: 14px;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+.card-pro {
+  position: relative;
+  z-index: 1;
+  height: 263px;
+  border-radius: 1px;
+  border: 1px solid $color-FFFFFF;
+  background-color: $color-FFFFFF;
+  box-shadow: 0 0.125rem 0.25rem rgba($color: $color-000, $alpha: 0.09);
+
+  &:hover {
+    border: 1px solid $color-main;
+    transition: 0.15s;
+    transform: translateY(-2px);
+    z-index: 100;
+    .card-pro__search {
+      opacity: 1;
+      height: auto;
+    }
+  }
+}
+
+.card-pro__container {
+  position: relative;
+  width: 100%;
+  height: 190px;
+}
+
+.card-pro__img {
+  width: 100%;
+  height: 100%;
+}
+
+.card-pro__love {
+  position: absolute;
+  top: 15px;
+  left: -3px;
+  background-color: $color-d42929;
+  color: $color-FFFFFF;
+  padding: 2px 5px;
+  font-size: 12px;
+
+  &::after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    border-top: 3px solid;
+    border-left: 3px solid transparent;
+    filter: brightness(60%);
+  }
+}
+
+.card-pro__discount {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: $color-FFD424;
+  color: $color-FFFFFF;
+  text-align: center;
+  padding: 2px 3px;
+  font-size: 15px;
+
+  &::before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    border-top: 10px solid $color-FFD424;
+    border-right: 22px solid transparent;
+  }
+
+  &::after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    bottom: -10px;
+    border-top: 10px solid $color-FFD424;
+    border-left: 22px solid transparent;
+  }
+}
+
+.card-pro__discount-percent {
+  font-size: 13px;
+  color: $color-main;
+}
+
+.card-pro__title {
+  font-size: 12px;
+  padding: 5px 10px;
+  max-height: 24px;
+  word-wrap: break-word;
+  white-space: normal;
+  overflow: hidden;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.card-pro__footer {
+  padding: 10px 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-pro__price {
+  color: $color-main;
+}
+
+.card-pro__total-sale {
+  color: rgba($color: $color-000, $alpha: 0.5);
+  font-size: 12px;
+}
+
+//Card category home page
+.card-cat-home {
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: 0.2s;
+  &:hover {
+    border-right: 1px solid rgba(0, 0, 0, 0.13);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.13);
+  }
+}
+
+.card-cat-home__img {
+  width: 100%;
+  height: 70%;
+  text-align: center;
+  > img {
+    width: 70%;
+    height: 100%;
+  }
+}
+
+.card-cat-home__title {
+  font-size: 14px;
+  text-align: center;
+}
+
+//card cart
+.cart-popup {
+  &--nothing {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 200px;
+    font-size: 14px;
+    color: rgba($color: $color-000, $alpha: 0.5);
+    &::before {
+      content: '';
+      width: 100%;
+      height: 100px;
+      background-image: url('../../images/cart/empty.png');
+      background-repeat: no-repeat;
+      background-size: 100%;
+    }
+  }
+}
+
+.cart-popup__title {
+  color: $color-CCCCCC;
+  font-size: 14px;
+}
+
+
+.cart-popup__btn {
+  text-align: right;
+  margin: 10px 0;
+}
+
+.card-cart {
+  display: flex;
+  overflow: hidden;
+  margin-top: 15px;
+}
+
+.card-cart__img {
+  width: 50px;
+  height: 50px;
+  border: 1px solid $color-CCCCCC;
+  > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.card-cart__title {
+  width: calc(100% - 150px);
+  padding-left: 10px;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.card-cart__price {
+  width: 100px;
+  text-align: right;
+}

@@ -1,0 +1,153 @@
+.c-navbar {
+  position: fixed;
+  width: 100%;
+  background-color: $color-main;
+  padding-top: 7px;
+  z-index: 100;
+  top: 0;
+}
+
+.c-navbar__container {
+  @include container();
+}
+
+.c-navbar__main {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.c-navbar__brand {
+  cursor: pointer;
+
+  flex: 0 0 15%;
+  max-width: 15%;
+}
+
+.c-navbar__logo {
+  width: 162px;
+  height: 50px;
+  fill: $color-FFFFFF;
+}
+
+// .c-navbar__routes {
+//   // hidden on mobile
+//   display: none;
+
+//   @media (min-width: 1200px) {
+//     display: flex;
+//   }
+
+//   @media (min-width: 768px) {
+//     flex: 0 0 80%;
+//     max-width: 80%;
+//   }
+// }
+
+// .c-navbar__route {
+//   display: block;
+//   cursor: pointer;
+//   padding: 10px 20px;
+//   margin: 0 5px;
+//   border-bottom: 2px solid $color-FFFFFF;
+// }
+
+// .c-navbar__link {
+//   text-decoration: none;
+//   color: $color-FFFFFF;
+// }
+
+.c-navbar__center {
+  flex: 0 0 70%;
+  max-width: 70%;
+}
+
+.c-navbar__search {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 20px;
+  border-radius: 2px;
+  background-color: $color-FFFFFF;
+  box-shadow: 0 0.125rem 0.25rem rgba($color: #000000, $alpha: 0.15);
+  padding: 10px 3px 10px 5px;
+}
+
+.c-navbar__input {
+  border: none;
+  outline: none;
+  width: calc(100% - 80px);
+  font-weight: 300;
+  height: 100%;
+  padding-left: 10px;
+}
+
+.c-navbar__search-btn {
+  cursor: pointer;
+  width: 60px;
+  height: calc(100% + 14px);
+  border: none;
+  background-color: $color-main;
+  border-radius: 2px;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.c-navbar__search-icon {
+  color: $color-FFFFFF;
+  font-size: 18px;
+}
+
+.c-navbar__tags {
+  display: flex;
+  margin: 0;
+  padding: 10px 0;
+}
+
+.c-navbar__tag {
+  display: block;
+  font-size: 12px;
+  color: $color-FFFFFF;
+  padding-right: 10px;
+  font-weight: 100;
+  cursor: pointer;
+}
+
+.c-navbar__action {
+  flex: 0 0 10%;
+  max-width: 10%;
+}
+
+.c-navbar__cart {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.c-navbar__cart-icon {
+  color: $color-FFFFFF;
+  font-size: 30px;
+}
+
+.c-navbar__total {
+  position: absolute;
+  padding: 2px;  
+  background-color: $color-e63a17;
+  border-radius: 10px;
+  top: -6px;
+  right: 30px;
+}
+
+.c-navbar__cart-number {
+  font-size: 14px;
+  background-color: $color-FFFFFF;
+  border-radius: 10px;
+  min-width: 30px;
+  width: fit-content;
+  text-align: center;
+  color: $color-main;
+}

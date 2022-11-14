@@ -1,0 +1,23 @@
+// swiper Styles must use direct files imports
+@import 'swiper/scss';
+@import 'swiper/scss/navigation';
+@import 'swiper/scss/pagination';
+
+@import './base/color', './base/mixin', './base/common';
+
+@import './layout/index', './layout/chatbox';
+
+@import './component/navbar',
+        './component/popover',
+        './component/carousel',
+        './component/tooltip',
+        './component/card';
+
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-family: Roboto, sans-serif;
+  background-color: $color-f5f5f5;
+}
