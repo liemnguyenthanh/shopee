@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { SwapItemInArray } from '../../utils/helpers';
-import { GatewayState, IKeyObject, ResponseSocket } from '../../utils/types/Gateway';
+import { SwapItemInArray } from 'utils/helpers';
+import { GatewayState, IKeyObject, IMessage, ResponseSocket } from 'utils/types/Gateway';
 import { fetchRoomListThunk } from './gatewayThunk';
 
 const initialState: GatewayState = {
@@ -44,9 +44,17 @@ export const gatewaySlice = createSlice({
         }
 
         const roomIndex = state.roomList.findIndex(d => d.id === data.room_id)
-        if (roomIndex !== -1) 
+        if (roomIndex !== -1)
           state.roomList[roomIndex].lastMessage = data.message
-          state.roomList = SwapItemInArray(state.roomList, 0, roomIndex)
+        state.roomList = SwapItemInArray(state.roomList, 0, roomIndex)
+      }
+    },
+    loadMoreMessage: (state, action: PayloadAction<{ room_id: string, list: IMessage[] }>) => {
+      const { room_id, list } = action.payload; 
+      if (room_id in state.messagesAllRoom) {
+        state.messagesAllRoom[room_id] = list.concat(state.messagesAllRoom[room_id]) 
+      } else {
+        state.messagesAllRoom[room_id] = list
       }
     },
     clearEvent: (state, action: PayloadAction<"event" | "receive">) => {
@@ -70,6 +78,7 @@ export const {
   sendEventSocket,
   receiveEventSocket,
   clearEvent,
-  selectRoom
+  selectRoom,
+  loadMoreMessage
 } = gatewaySlice.actions;
 export default gatewaySlice.reducer;

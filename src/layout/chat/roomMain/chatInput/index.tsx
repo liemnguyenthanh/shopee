@@ -1,11 +1,11 @@
-
 import React, { useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { AppDispatch, RootState } from '../../../../stores'
-import { sendEventSocket } from '../../../../stores/gateway/gatewaySlice'
-import { createMessage } from '../../../../utils/helpers/chat'
-import { IMessage } from '../../../../utils/types/Gateway'
-import { v4 as uuidv4 } from 'uuid';
+import { AppDispatch, RootState } from 'stores'
+import { sendEventSocket } from 'stores/gateway/gatewaySlice'
+import { createMessage } from 'utils/helpers/chat'
+import { IMessage } from 'utils/types/Gateway'
+import { v4 as random } from 'uuid';
+
 const CChatInput = () => {
   const { selectedRoomId } = useSelector((state: RootState) => state.gateway)
   const { user } = useSelector((state: RootState) => state.common)
@@ -18,8 +18,9 @@ const CChatInput = () => {
     if (inputRef.current?.value.trim()) {
       let { value } = inputRef.current
       const request_message: IMessage = createMessage(
-        uuidv4(), null, user.username, selectedRoomId, value, new Date().getTime(), null
+        random(), null, user.username, selectedRoomId, value, new Date().getTime(), null
       )
+      console.log({request_message});
       dispatch(sendEventSocket({ 'SEND_MESSAGE': request_message }));
       inputRef.current.value = '';
     }

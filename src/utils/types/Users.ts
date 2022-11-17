@@ -6,9 +6,9 @@ export type CreateUserParams = {
 };
 
 export type IUser = {
-  id: number | string;
+  id?: number | string;
   username: string;
   email?: string;
-  firstName: string;
-  lastName: string;
+  firstName?: string;
+  lastName?: string;
 };

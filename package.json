@@ -1,5 +1,5 @@
 {
-  "name": "my-app",
+  "name": "shopee",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -13,6 +13,7 @@
     "@types/react-dom": "^18.0.6",
     "@types/socket.io-client": "^3.0.0",
     "axios": "^0.27.2",
+    "babel-plugin-module-resolver": "^4.1.0",
     "bootstrap": "^5.2.1",
     "node-sass": "^7.0.3",
     "react": "^18.2.0",
@@ -52,5 +53,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint-plugin-react-hooks": "^4.6.0"
   }
 }

@@ -1,3 +1,5 @@
+import { IUser } from "./Users"
+
 export interface IKeyObject<T> {
   [key: string]: T
 }
@@ -43,4 +45,9 @@ export interface IMessage {
 export interface ResponseSocket {
   key: string,
   data: any,
+}
+export interface MessageGroupByUser {
+  user: IUser | null,
+  key: string | null,
+  message_group: IMessage[] | null,
 }
