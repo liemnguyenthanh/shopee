@@ -12,7 +12,7 @@ export interface GatewayState {
   newMessage: IMessage | null,
   selectedRoomId: string | null,
   roomMain: IRoomMain,
-  messagesAllRoom: IKeyObject<IMessage[]>,
+  messagesAllRoom: IKeyObject<MessageGroupByUser[]>,
 }
 
 export interface IRoomMain {

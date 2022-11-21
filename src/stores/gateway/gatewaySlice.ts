@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { SwapItemInArray } from 'utils/helpers';
+import { convertMessagesByUser, mergeMessagesByUser } from 'utils/helpers/chat';
 import { GatewayState, IKeyObject, IMessage, ResponseSocket } from 'utils/types/Gateway';
 import { fetchRoomListThunk } from './gatewayThunk';
 
@@ -38,9 +39,9 @@ export const gatewaySlice = createSlice({
           state.roomMain.messageList.push(data)
         }
         if (data.room_id in state.messagesAllRoom) {
-          state.messagesAllRoom[data.room_id].push(data)
+          state.messagesAllRoom[data.room_id] = mergeMessagesByUser([data], state.messagesAllRoom[data.room_id])
         } else {
-          state.messagesAllRoom[data.room_id] = [data]
+          state.messagesAllRoom[data.room_id] = convertMessagesByUser([data]);
         }
 
         const roomIndex = state.roomList.findIndex(d => d.id === data.room_id)
@@ -49,12 +50,12 @@ export const gatewaySlice = createSlice({
         state.roomList = SwapItemInArray(state.roomList, 0, roomIndex)
       }
     },
-    loadMoreMessage: (state, action: PayloadAction<{ room_id: string, list: IMessage[] }>) => {
-      const { room_id, list } = action.payload; 
+    loadMoreMessage: (state, action: PayloadAction<{ room_id: string, new_list: IMessage[] }>) => {
+      const { room_id, new_list } = action.payload;
       if (room_id in state.messagesAllRoom) {
-        state.messagesAllRoom[room_id] = list.concat(state.messagesAllRoom[room_id]) 
+        state.messagesAllRoom[room_id] = mergeMessagesByUser(new_list, state.messagesAllRoom[room_id], true)
       } else {
-        state.messagesAllRoom[room_id] = list
+        // state.messagesAllRoom[room_id] = new_list
       }
     },
     clearEvent: (state, action: PayloadAction<"event" | "receive">) => {

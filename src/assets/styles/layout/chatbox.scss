@@ -214,3 +214,22 @@ $height-chat-box : 510px;
   justify-content: space-between;
   align-items: center;
 }
+
+.chatbox__icons {
+  color: $color-main;
+  cursor: pointer;
+  border: 2px solid #fff;
+  &:hover {
+    border-radius: 50%;
+    border: 2px solid rgba($color: $color-main, $alpha: 0.3);
+  }
+}
+
+.chatbox__sent-btn {
+  cursor: pointer;
+}
+
+.chatbox__sent-icon {
+  color: $color-main;
+  font-size: 24px;
+}
